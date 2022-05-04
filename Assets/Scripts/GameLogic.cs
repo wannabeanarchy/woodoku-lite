@@ -32,7 +32,7 @@ public static class GameLogic
     public static bool CheckShapeInsert(int x, int y, GameObject[,] gridCells, List<GameObject> shapeTiles)
     {
         foreach (var tile in shapeTiles)
-        {
+        { 
             int _x = x - tile.GetComponent<Tile>().coordinate.x;
             int _y = y + tile.GetComponent<Tile>().coordinate.y;
 
@@ -73,6 +73,7 @@ public static class GameLogic
         {
             int _x = _xCell - tile.GetComponent<Tile>().coordinate.x;
             int _y = _yCell + tile.GetComponent<Tile>().coordinate.y;
+
             tile.transform.SetParent(gridGenerator.GetGridCells()[_x, _y].transform);
             tile.transform.localPosition = Vector3.zero;
         } 

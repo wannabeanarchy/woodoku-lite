@@ -100,21 +100,21 @@ public class ShapeTiles : MonoBehaviour, IPointerClickHandler, IBeginDragHandler
         if (!isActive)
             return; 
 
-        isDrag = true;
+        isDrag = true; 
         canvasObjectGroup.blocksRaycasts = false;
         Vector3 l_VectorOffset = new Vector3(eventData.position.x, eventData.position.y, 0) - eventData.rawPointerPress.transform.position - eventData.rawPointerPress.transform.localPosition / 2;
         eventData.pointerPress.transform.position = (eventData.pointerPress.transform.position + l_VectorOffset);
-
-        GenerateTilesList(eventData.pointerEnter);
+ 
+        GenerateTilesList(eventData.rawPointerPress);
         GameLogic.onSoundClick.Invoke();
     }
 
+   
     public void OnDrag(PointerEventData eventData)
     {
         if (!isActive)
-            return; 
-
-        GenerateTilesList(eventData.rawPointerPress);
+            return;
+ 
         rectTransform.localScale = new Vector3(1f, 1f, 1f);
         rectTransform.anchoredPosition += eventData.delta / canvasObject.scaleFactor;
     }

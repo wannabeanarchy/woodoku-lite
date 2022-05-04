@@ -21,21 +21,24 @@ public class Tile : MonoBehaviour
 
 
     public void SetXY(GameObject zeroObject)
-    {
-        var a = (zeroObject.transform.localPosition.x - this.transform.localPosition.x);
-        var b = (zeroObject.transform.localPosition.y - this.transform.localPosition.y);
+    { 
+        Vector3 _zeroObjectPosition = zeroObject.transform.localPosition;
+        Vector3 _targetObjectPosition = this.transform.localPosition;
 
-        coordinate.x = Mathf.RoundToInt(zeroObject.transform.localPosition.x - this.transform.localPosition.x) / tileWidth;
-        coordinate.y = Mathf.RoundToInt(zeroObject.transform.localPosition.y - this.transform.localPosition.y) / tileHeight;
+        float _x = (_zeroObjectPosition.x - _targetObjectPosition.x) / tileWidth;
+        float _y = (_zeroObjectPosition.y - _targetObjectPosition.y) / tileHeight;
+        
+        coordinate.x = (int)Math.Round(_x, 0);
+        coordinate.y = (int)Math.Round(_y, 0); 
     }
 
     public void SetXY(GameObject zeroObject, out int x, out int y)
     {
-        var a = (zeroObject.transform.localPosition.x - this.transform.localPosition.x);
-        var b = (zeroObject.transform.localPosition.y - this.transform.localPosition.y);
+        Vector3 _zeroObjectPosition = zeroObject.transform.localPosition;
+        Vector3 _targetObjectPosition = this.transform.localPosition;
 
-        x = Mathf.RoundToInt(zeroObject.transform.localPosition.x - this.transform.localPosition.x) / tileWidth;
-        y = Mathf.RoundToInt(zeroObject.transform.localPosition.y - this.transform.localPosition.y) / tileHeight;
+        x = (int)Math.Round(((_zeroObjectPosition.x - _targetObjectPosition.x) / tileWidth), 0);
+        y = (int)Math.Round(((_zeroObjectPosition.y - _targetObjectPosition.y) / tileHeight), 0);
     } 
 
     public void NeedDestroy()
